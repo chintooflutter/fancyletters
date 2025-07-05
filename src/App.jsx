@@ -11,7 +11,7 @@ function AppContent() {
   const subdomain = getSubdomain();
 
   if (subdomain) {
-    return <SubdomainPage />;
+    return <SubdomainPage subdomain={subdomain} />;
   }
 
   return (
