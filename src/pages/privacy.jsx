@@ -1,9 +1,6 @@
-import { Helmet } from "react-helmet-async";
-
 export default function Privacy() {
   return (
     <div className="max-w-3xl mx-auto px-6 py-10 text-gray-800">
-      <Helmet>
         <title>Privacy Policy | FancyLetters.org</title>
         <meta
           name="description"
@@ -15,7 +12,6 @@ export default function Privacy() {
         />
         <meta name="author" content="fancyletters.org" />
         <meta name="robots" content="index, follow" />
-      </Helmet>
 
       <h1 className="text-3xl font-bold mb-4">Privacy Policy</h1>
       <p className="mb-4 text-sm text-gray-500">Last updated: December 13, 2023</p>

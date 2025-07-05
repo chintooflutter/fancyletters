@@ -1,4 +1,3 @@
-import SEO from "../components/Seo";
 import Layout from "../components/Layout";
 
 export default function About() {
