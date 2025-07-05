@@ -35,3 +35,10 @@ firebase.json
 *.njsproj
 *.sln
 *.sw?
+
+# Ignore local preview/test files
+src/pages/test.jsx
+
+# Optional in .gitignore
+.postcssrc
+tailwind.config.js
