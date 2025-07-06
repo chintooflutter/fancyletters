@@ -3,6 +3,7 @@ import { useState } from "react";
 export default function Design({ title, fontStyles }) {
   const [input, setInput] = useState("");
   const [activeCategory, setActiveCategory] = useState("All");
+  const [copiedText, setCopiedText] = useState("");
 
   const categories = ["All", ...new Set(fontStyles.map((s) => s.category))];
 
@@ -13,6 +14,8 @@ export default function Design({ title, fontStyles }) {
 
   const handleCopy = (text) => {
     navigator.clipboard.writeText(text);
+    setCopiedText(text);
+    setTimeout(() => setCopiedText(""), 1500); // Clear after 1.5s
   };
 
   return (
@@ -21,8 +24,7 @@ export default function Design({ title, fontStyles }) {
       <header style={styles.header}>
         <h1 style={styles.title}>{title} ✨</h1>
         <p style={styles.description}>
-          Type your text below and instantly see it transformed into cute font
-          styles. Copy and paste wherever you want!
+          Type your text below and instantly see it transformed into cute font styles. Copy and paste wherever you want!
         </p>
       </header>
 
@@ -44,9 +46,7 @@ export default function Design({ title, fontStyles }) {
 
       {/* Input */}
       <div style={styles.inputWrap}>
-        <label htmlFor="input" style={styles.label}>
-          With Text
-        </label>
+        <label htmlFor="input" style={styles.label}>With Text</label>
         <textarea
           id="input"
           rows={3}
@@ -67,12 +67,17 @@ export default function Design({ title, fontStyles }) {
                 <p style={styles.fontName}>{name}</p>
                 <p style={styles.outputText}>{output}</p>
               </div>
-              <button
-                onClick={() => handleCopy(output)}
-                style={styles.copyButton}
-              >
-                Copy
-              </button>
+              <div style={styles.copyWrapper}>
+                <button
+                  onClick={() => handleCopy(output)}
+                  style={styles.copyButton}
+                >
+                  Copy
+                </button>
+                {copiedText === output && (
+                  <span style={styles.copiedText}>Copied!</span>
+                )}
+              </div>
             </div>
           );
         })}
@@ -99,7 +104,7 @@ const styles = {
   },
   title: {
     fontSize: "2.5rem",
-    color: "#ec4899", // pink-600
+    color: "#ec4899",
     fontWeight: "bold",
     marginBottom: "0.5rem",
   },
@@ -157,7 +162,9 @@ const styles = {
   },
   card: {
     display: "flex",
-    flexDirection: "column",
+    justifyContent: "space-between",
+    alignItems: "center",
+    flexWrap: "wrap",
     border: "1px solid #eee",
     borderRadius: "10px",
     padding: "1rem",
@@ -165,7 +172,8 @@ const styles = {
     boxShadow: "0 1px 3px rgba(0,0,0,0.05)",
   },
   cardLeft: {
-    marginBottom: "0.5rem",
+    flex: 1,
+    marginRight: "1rem",
   },
   fontName: {
     fontSize: "0.75rem",
@@ -178,16 +186,27 @@ const styles = {
     whiteSpace: "pre-wrap",
     lineHeight: 1.5,
   },
+  copyWrapper: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "flex-end",
+    gap: "0.25rem",
+  },
   copyButton: {
-    alignSelf: "flex-start",
     padding: "0.4rem 1rem",
     borderRadius: "6px",
     border: "1px solid #ddd",
-    background: "#f9fafb",
+    background: "#ec4899",
+    color: "#fff",
     fontSize: "0.875rem",
     fontWeight: "500",
     cursor: "pointer",
     transition: "all 0.2s",
+  },
+  copiedText: {
+    fontSize: "0.75rem",
+    color: "#16a34a",
+    fontWeight: "bold",
   },
   footer: {
     marginTop: "4rem",

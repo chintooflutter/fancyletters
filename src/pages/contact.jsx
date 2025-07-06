@@ -32,16 +32,16 @@ export default function Contact() {
         <li>
           <strong>Email:</strong>{" "}
           <a
-            href="mailto:support@fancyletters.org"
+            href="mailto:info@fancyletters.org"
             style={{ color: "#2563eb", textDecoration: "underline" }}
           >
-            support@fancyletters.org
+            info@fancyletters.org
           </a>
         </li>
         <li style={{ marginTop: "0.5rem" }}>
           <strong>Instagram:</strong>{" "}
           <a
-            href="https://instagram.com/fancyletters"
+            href="https://www.instagram.com/fancyletters_org/"
             target="_blank"
             rel="noopener noreferrer"
             style={{ color: "#2563eb", textDecoration: "underline" }}
