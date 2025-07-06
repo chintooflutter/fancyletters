@@ -10,20 +10,20 @@ import { getSubdomain } from "./pages/utils/getSubdomain"; // ✅ correct path
 function AppContent() {
   const subdomain = getSubdomain();
 
-  if (subdomain) {
-    return <SubdomainPage subdomain={subdomain} />;
-  }
-
   return (
     <div className="flex min-h-screen flex-col">
       <Header />
       <main className="flex-1">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/privacy" element={<Privacy />} />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
+        {subdomain ? (
+          <SubdomainPage subdomain={subdomain} />
+        ) : (
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/privacy" element={<Privacy />} />
+            <Route path="/contact" element={<Contact />} />
+          </Routes>
+        )}
       </main>
     </div>
   );

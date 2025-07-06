@@ -1,3 +1,8 @@
+/* === Tailwind Base Directives === */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* === Base global styles === */
 body {
   background-color: #f8fafc; /* equivalent to bg-slate-50 */

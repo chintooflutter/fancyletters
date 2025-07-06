@@ -26,22 +26,24 @@ export default function SubdomainPage() {
 
   if (!data) {
     return (
-      <div style={{ padding: "2rem" }}>
-        <h1>404 - Subdomain Not Found</h1>
+      <div className="p-6">
+        <h1 className="text-2xl font-bold mb-2">404 - Subdomain Not Found</h1>
         <p>The subdomain "{subdomain}" is not configured.</p>
       </div>
     );
   }
 
-  if (SubdomainComponent) {
-    return <SubdomainComponent />;
-  }
-
   return (
-    <div style={{ padding: "2rem" }}>
-      <h1>{data.title}</h1>
-      <p>{data.description}</p>
-      <p style={{ fontSize: "2rem", marginTop: "1rem" }}>{data.example}</p>
+    <div className="p-6">
+      {SubdomainComponent ? (
+        <SubdomainComponent />
+      ) : (
+        <>
+          <h1 className="text-2xl font-bold mb-2">{data.title}</h1>
+          <p className="mb-4">{data.description}</p>
+          <div className="text-3xl mt-4">{data.example}</div>
+        </>
+      )}
     </div>
   );
 }
