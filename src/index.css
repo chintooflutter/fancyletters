@@ -1,29 +1,47 @@
-
-/* === Tailwind base setup === */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-/* === Optional: Global body defaults === */
+/* === Base global styles === */
 body {
-  @apply bg-white text-gray-800 antialiased;
+  background-color: #f8fafc; /* equivalent to bg-slate-50 */
+  color: #1f2937; /* equivalent to text-gray-800 */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 }
 
-/* === shadcn/ui theme-aware base styling === */
-@layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
+/* === Default border and outline styling === */
+* {
+  border-color: #e5e7eb; /* Tailwind's border-border (gray-200) */
+  outline-color: rgba(59, 130, 246, 0.5); /* Tailwind's ring/50 (blue-500/50) */
 }
 
-/* === Optional: Utility tweaks (optional) === */
+/* === Links === */
 a {
-  @apply text-blue-600 hover:underline;
+  color: #2563eb; /* Tailwind's blue-600 */
+  text-decoration: none;
 }
 
+a:hover {
+  text-decoration: underline;
+}
+
+/* === Buttons === */
 button {
-  @apply font-medium transition-colors;
+  font-weight: 500;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+/* === Responsive Navigation for Desktop === */
+@media (min-width: 768px) {
+  nav {
+    display: flex !important;
+    flex-direction: row !important;
+    width: auto !important;
+    gap: 1.5rem !important;
+    margin-top: 0 !important;
+  }
+
+  button {
+    display: none !important; /* hide hamburger on desktop */
+  }
 }

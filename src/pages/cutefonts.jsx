@@ -1,7 +1,7 @@
 import Design from "../components/Design";
 
 const cuteFontStyles = [
-  // Group: Styling & Fonts
+  // Styling & Fonts
   {
     name: "Heart Border",
     category: "Styling & Fonts",
@@ -26,14 +26,13 @@ const cuteFontStyles = [
   {
     name: "Cursive Style",
     category: "Styling & Fonts",
-    transform: (text) => text.normalize("NFD").replace(/./g, c => {
+    transform: (text) => text.replace(/./g, c => {
       const cursive = {
         A:"𝒜",B:"𝐵",C:"𝒞",D:"𝒟",E:"𝐸",F:"𝐹",G:"𝒢",H:"𝐻",I:"𝐼",J:"𝒥",K:"𝒦",L:"𝐿",
         M:"𝑀",N:"𝒩",O:"𝒪",P:"𝒫",Q:"𝒬",R:"𝑅",S:"𝒮",T:"𝒯",U:"𝒰",V:"𝒱",W:"𝒲",X:"𝒳",
-        Y:"𝒴",Z:"𝒵",
-        a:"𝒶",b:"𝒷",c:"𝒸",d:"𝒹",e:"𝑒",f:"𝒻",g:"𝑔",h:"𝒽",i:"𝒾",j:"𝒿",k:"𝓀",l:"𝓁",
-        m:"𝓂",n:"𝓃",o:"𝑜",p:"𝓅",q:"𝓆",r:"𝓇",s:"𝓈",t:"𝓉",u:"𝓊",v:"𝓋",w:"𝓌",x:"𝓍",
-        y:"𝓎",z:"𝓏"
+        Y:"𝒴",Z:"𝒵",a:"𝒶",b:"𝒷",c:"𝒸",d:"𝒹",e:"𝑒",f:"𝒻",g:"𝑔",h:"𝒽",i:"𝒾",j:"𝒿",
+        k:"𝓀",l:"𝓁",m:"𝓂",n:"𝓃",o:"𝑜",p:"𝓅",q:"𝓆",r:"𝓇",s:"𝓈",t:"𝓉",u:"𝓊",v:"𝓋",
+        w:"𝓌",x:"𝓍",y:"𝓎",z:"𝓏"
       };
       return cursive[c] || c;
     }),
@@ -51,7 +50,7 @@ const cuteFontStyles = [
     transform: (text) => text.split("").join(" "),
   },
 
-  // Group: Social Media Fonts
+  // Social Media Fonts
   {
     name: "Bold Italic",
     category: "Social Media Fonts",
@@ -77,7 +76,7 @@ const cuteFontStyles = [
     transform: (text) => text.split("").reverse().join(""),
   },
 
-  // Group: Text Generators
+  // Text Generators
   {
     name: "Zalgo Glitch",
     category: "Text Generators",
@@ -96,10 +95,11 @@ const cuteFontStyles = [
   {
     name: "Boxed",
     category: "Text Generators",
-    transform: (text) => text.split("").map(c => `🅰️`.replace("A", c.toUpperCase())).join(" "),
+    transform: (text) =>
+      text.split("").map(c => `🅰️`.replace("A", c.toUpperCase())).join(" "),
   },
 
-  // Group: Tech & Encoding
+  // Tech & Encoding
   {
     name: "Binary Code",
     category: "Tech & Encoding",
@@ -133,13 +133,10 @@ const cuteFontStyles = [
     name: "Hexadecimal",
     category: "Tech & Encoding",
     transform: (text) =>
-      text
-        .split("")
-        .map((c) => c.charCodeAt(0).toString(16))
-        .join(" "),
+      text.split("").map((c) => c.charCodeAt(0).toString(16)).join(" "),
   },
 
-  // Group: Themes & Symbols
+  // Themes & Symbols
   {
     name: "Snowflake Wrap",
     category: "Themes & Symbols",
@@ -170,8 +167,6 @@ const cuteFontStyles = [
     category: "Themes & Symbols",
     transform: (text) => `🌙 ${text} 🌙`,
   },
-
-  // More fun
   {
     name: "Sparkle Sand",
     category: "Styling & Fonts",

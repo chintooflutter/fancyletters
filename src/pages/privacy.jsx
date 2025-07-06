@@ -1,40 +1,39 @@
 export default function Privacy() {
   return (
-    <div className="max-w-3xl mx-auto px-6 py-10 text-gray-800">
-        <title>Privacy Policy | FancyLetters.org</title>
-        <meta
-          name="description"
-          content="This Privacy Policy explains how FancyLetters.org collects, uses, and protects your data when using our service."
-        />
-        <meta
-          name="keywords"
-          content="fancyletters.org privacy policy, data collection, cookie policy, user privacy"
-        />
-        <meta name="author" content="fancyletters.org" />
-        <meta name="robots" content="index, follow" />
+    <div style={{ maxWidth: "720px", margin: "0 auto", padding: "2.5rem 1.5rem", color: "#1f2937" }}>
+      <h1 style={{ fontSize: "1.875rem", fontWeight: "bold", marginBottom: "1rem" }}>
+        Privacy Policy
+      </h1>
+      <p style={{ marginBottom: "1rem", fontSize: "0.875rem", color: "#6b7280" }}>
+        Last updated: December 13, 2023
+      </p>
 
-      <h1 className="text-3xl font-bold mb-4">Privacy Policy</h1>
-      <p className="mb-4 text-sm text-gray-500">Last updated: December 13, 2023</p>
-
-      <p className="mb-4">
+      <p style={{ marginBottom: "1rem" }}>
         This Privacy Policy describes Our policies and procedures on the collection, use and disclosure of Your
         information when You use the Service and tells You about Your privacy rights and how the law protects You.
       </p>
-      <p className="mb-4">
+      <p style={{ marginBottom: "1rem" }}>
         We use Your Personal data to provide and improve the Service. By using the Service, You agree to the collection
         and use of information in accordance with this Privacy Policy.
       </p>
 
-      <h2 className="text-2xl font-semibold mt-8 mb-4">Interpretation and Definitions</h2>
-      <h3 className="text-xl font-semibold mt-6 mb-2">Interpretation</h3>
-      <p className="mb-4">
+      <h2 style={{ fontSize: "1.5rem", fontWeight: "600", marginTop: "2rem", marginBottom: "1rem" }}>
+        Interpretation and Definitions
+      </h2>
+
+      <h3 style={{ fontSize: "1.25rem", fontWeight: "600", marginTop: "1.5rem", marginBottom: "0.5rem" }}>
+        Interpretation
+      </h3>
+      <p style={{ marginBottom: "1rem" }}>
         The words of which the initial letter is capitalized have meanings defined under the following conditions. The
         following definitions shall have the same meaning regardless of whether they appear in singular or in plural.
       </p>
 
-      <h3 className="text-xl font-semibold mt-6 mb-2">Definitions</h3>
-      <p className="mb-4">For the purposes of this Privacy Policy:</p>
-      <ul className="list-disc list-inside space-y-2 mb-4">
+      <h3 style={{ fontSize: "1.25rem", fontWeight: "600", marginTop: "1.5rem", marginBottom: "0.5rem" }}>
+        Definitions
+      </h3>
+      <p style={{ marginBottom: "1rem" }}>For the purposes of this Privacy Policy:</p>
+      <ul style={{ paddingLeft: "1.25rem", marginBottom: "1rem", listStyle: "disc" }}>
         <li><strong>Account:</strong> a unique account created for You to access our Service.</li>
         <li><strong>Affiliate:</strong> an entity under common control with a party.</li>
         <li><strong>Company:</strong> FancyLetters.org (“We”, “Us”, or “Our”).</li>
@@ -49,7 +48,7 @@ export default function Privacy() {
           <strong>Website:</strong> FancyLetters.org, accessible from{" "}
           <a
             href="https://fancyletters.org"
-            className="text-blue-600 underline"
+            style={{ color: "#2563eb", textDecoration: "underline" }}
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -59,38 +58,51 @@ export default function Privacy() {
         <li><strong>You:</strong> the user of the Service.</li>
       </ul>
 
-      <h2 className="text-2xl font-semibold mt-8 mb-4">Collecting and Using Your Personal Data</h2>
-      <h3 className="text-xl font-semibold mt-6 mb-2">Types of Data Collected</h3>
+      <h2 style={{ fontSize: "1.5rem", fontWeight: "600", marginTop: "2rem", marginBottom: "1rem" }}>
+        Collecting and Using Your Personal Data
+      </h2>
 
-      <h4 className="text-lg font-semibold mt-4 mb-2">Personal Data</h4>
-      <p className="mb-4">
+      <h3 style={{ fontSize: "1.25rem", fontWeight: "600", marginTop: "1.5rem", marginBottom: "0.5rem" }}>
+        Types of Data Collected
+      </h3>
+
+      <h4 style={{ fontSize: "1.125rem", fontWeight: "600", marginTop: "1rem", marginBottom: "0.5rem" }}>
+        Personal Data
+      </h4>
+      <p style={{ marginBottom: "1rem" }}>
         While using Our Service, We may ask You to provide Us with certain personally identifiable information that can
         be used to contact or identify You. Personally identifiable information may include, but is not limited to:
       </p>
-      <ul className="list-disc list-inside mb-4">
+      <ul style={{ paddingLeft: "1.25rem", marginBottom: "1rem", listStyle: "disc" }}>
         <li>Usage Data</li>
       </ul>
 
-      <h4 className="text-lg font-semibold mt-4 mb-2">Usage Data</h4>
-      <p className="mb-4">
+      <h4 style={{ fontSize: "1.125rem", fontWeight: "600", marginTop: "1rem", marginBottom: "0.5rem" }}>
+        Usage Data
+      </h4>
+      <p style={{ marginBottom: "1rem" }}>
         Usage Data is collected automatically and may include information such as Your IP address, browser type, pages
         visited, and time spent on pages.
       </p>
 
-      <h4 className="text-lg font-semibold mt-4 mb-2">Tracking Technologies and Cookies</h4>
-      <p className="mb-4">
+      <h4 style={{ fontSize: "1.125rem", fontWeight: "600", marginTop: "1rem", marginBottom: "0.5rem" }}>
+        Tracking Technologies and Cookies
+      </h4>
+      <p style={{ marginBottom: "1rem" }}>
         We use cookies and similar tracking technologies to track the activity on Our Service and store certain
         information.
       </p>
-      <ul className="list-disc list-inside space-y-2 mb-6">
+      <ul style={{ paddingLeft: "1.25rem", marginBottom: "1.5rem", listStyle: "disc" }}>
         <li><strong>Browser Cookies:</strong> small text files stored on your device.</li>
         <li><strong>Web Beacons:</strong> tiny graphics used to monitor behavior.</li>
         <li><strong>Essential Cookies:</strong> necessary for login/session functionality.</li>
         <li><strong>Functionality Cookies:</strong> remembers your preferences.</li>
       </ul>
 
-      <h3 className="text-xl font-semibold mt-6 mb-2">Use of Your Personal Data</h3>
-      <ul className="list-disc list-inside space-y-2 mb-6">
+      <h3 style={{ fontSize: "1.25rem", fontWeight: "600", marginTop: "1.5rem", marginBottom: "0.5rem" }}>
+        Use of Your Personal Data
+      </h3>
+      <ul style={{ paddingLeft: "1.25rem", marginBottom: "1.5rem", listStyle: "disc" }}>
         <li>To maintain and improve our Service</li>
         <li>To contact You for updates or support</li>
         <li>To manage Your account and settings</li>
@@ -98,15 +110,21 @@ export default function Privacy() {
         <li>To analyze Service performance and user behavior</li>
       </ul>
 
-      <h2 className="text-2xl font-semibold mt-10 mb-4">Children’s Privacy</h2>
-      <p className="mb-4">
+      <h2 style={{ fontSize: "1.5rem", fontWeight: "600", marginTop: "2.5rem", marginBottom: "1rem" }}>
+        Children’s Privacy
+      </h2>
+      <p style={{ marginBottom: "1rem" }}>
         Our Service does not address anyone under the age of 13. We do not knowingly collect personal data from anyone
         under 13 years of age.
       </p>
 
-      <h2 className="text-2xl font-semibold mt-10 mb-4">Contact Us</h2>
-      <p className="mb-2">If you have any questions about this Privacy Policy, You can contact us:</p>
-      <ul className="list-disc list-inside mb-6">
+      <h2 style={{ fontSize: "1.5rem", fontWeight: "600", marginTop: "2.5rem", marginBottom: "1rem" }}>
+        Contact Us
+      </h2>
+      <p style={{ marginBottom: "0.5rem" }}>
+        If you have any questions about this Privacy Policy, You can contact us:
+      </p>
+      <ul style={{ paddingLeft: "1.25rem", marginBottom: "1rem", listStyle: "disc" }}>
         <li>Email: info@fancyletters.org</li>
       </ul>
     </div>

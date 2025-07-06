@@ -1,24 +1,50 @@
 export default function Contact() {
   return (
-    <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-      <h1 className="text-3xl font-bold mb-6">Contact Us</h1>
-      <p className="mb-4">
+    <div
+      style={{
+        maxWidth: "768px",
+        margin: "0 auto",
+        padding: "2.5rem 1rem",
+        color: "#1f2937",
+      }}
+    >
+      <h1
+        style={{
+          fontSize: "1.875rem",
+          fontWeight: "bold",
+          marginBottom: "1.5rem",
+        }}
+      >
+        Contact Us
+      </h1>
+
+      <p style={{ marginBottom: "1rem" }}>
         Have a question or suggestion? We'd love to hear from you!
       </p>
-      <ul className="list-disc pl-6 space-y-2">
+
+      <ul
+        style={{
+          paddingLeft: "1.5rem",
+          listStyle: "disc",
+          lineHeight: "1.75",
+        }}
+      >
         <li>
-          <strong>Email:</strong>{' '}
-          <a href="mailto:support@fancyletters.org" className="text-blue-600 hover:underline">
+          <strong>Email:</strong>{" "}
+          <a
+            href="mailto:support@fancyletters.org"
+            style={{ color: "#2563eb", textDecoration: "underline" }}
+          >
             support@fancyletters.org
           </a>
         </li>
-        <li>
-          <strong>Instagram:</strong>{' '}
+        <li style={{ marginTop: "0.5rem" }}>
+          <strong>Instagram:</strong>{" "}
           <a
             href="https://instagram.com/fancyletters"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-blue-600 hover:underline"
+            style={{ color: "#2563eb", textDecoration: "underline" }}
           >
             @fancyletters
           </a>

@@ -1,9 +1,28 @@
+import { useState, useEffect } from 'react';
 import { getSubdomain } from '../utils/getSubdomain';
 import { subdomainPages } from './data';
 
 export default function SubdomainPage() {
   const subdomain = getSubdomain();
   const data = subdomainPages[subdomain];
+
+  const [SubdomainComponent, setSubdomainComponent] = useState(null);
+
+  useEffect(() => {
+    async function loadComponent() {
+      try {
+        const module = await import(`../${subdomain}.jsx`);
+        setSubdomainComponent(() => module.default);
+      } catch (err) {
+        console.warn(`No individual component found for subdomain "${subdomain}"`);
+        setSubdomainComponent(null);
+      }
+    }
+
+    if (data) {
+      loadComponent();
+    }
+  }, [subdomain]);
 
   if (!data) {
     return (
@@ -12,6 +31,10 @@ export default function SubdomainPage() {
         <p>The subdomain "{subdomain}" is not configured.</p>
       </div>
     );
+  }
+
+  if (SubdomainComponent) {
+    return <SubdomainComponent />;
   }
 
   return (

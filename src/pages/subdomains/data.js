@@ -2,7 +2,7 @@ export const subdomainPages = {
   cutefonts: {
     title: "Cute Fonts Generator",
     description: "Generate cute, playful fonts for your social media and bios.",
-    example: "C̥ͦu̥ͦt̥ͦe̥ͦ 💖 F̥ͦo̥ͦn̥ͦt̥ͦs̥ͦ"
+    example: "♡ 𝒞𝓊𝓉ℯ 𝓉ℯ𝓍𝓉 ♡"
   },
   uppercase: {
     title: "Uppercase Generator",

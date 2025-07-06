@@ -1,6 +1,16 @@
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 export default function Header() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   return (
     <header style={styles.header}>
       <div style={styles.container}>
@@ -8,11 +18,19 @@ export default function Header() {
           FancyLetters<span style={styles.dot}>.org</span>
         </Link>
 
-        <nav style={styles.nav}>
-          <Link to="/about" style={styles.navLink}>About</Link>
-          <Link to="/privacy" style={styles.navLink}>Privacy</Link>
-          <Link to="/contact" style={styles.navLink}>Contact</Link>
-        </nav>
+        {isMobile && (
+          <button onClick={() => setIsOpen(!isOpen)} style={styles.hamburger}>
+            ☰
+          </button>
+        )}
+
+        {(isOpen || !isMobile) && (
+          <nav style={isMobile ? styles.navMobile : styles.navDesktop}>
+            <Link to="/about" style={styles.navLink} onClick={() => setIsOpen(false)}>About</Link>
+            <Link to="/privacy" style={styles.navLink} onClick={() => setIsOpen(false)}>Privacy</Link>
+            <Link to="/contact" style={styles.navLink} onClick={() => setIsOpen(false)}>Contact</Link>
+          </nav>
+        )}
       </div>
     </header>
   );
@@ -34,6 +52,7 @@ const styles = {
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
+    flexWrap: "wrap",
   },
   logo: {
     fontSize: "1.5rem",
@@ -44,14 +63,30 @@ const styles = {
   dot: {
     color: "#0070f3",
   },
-  nav: {
+  hamburger: {
+    background: "none",
+    border: "none",
+    fontSize: "1.5rem",
+    cursor: "pointer",
+    color: "#333",
+    marginLeft: "auto",
+  },
+  navDesktop: {
     display: "flex",
     gap: "1.5rem",
+  },
+  navMobile: {
+    width: "100%",
+    display: "flex",
+    flexDirection: "column",
+    marginTop: "1rem",
+    gap: "1rem",
   },
   navLink: {
     fontSize: "1rem",
     textDecoration: "none",
     color: "#333",
+    padding: "0.5rem 0",
     transition: "color 0.2s ease",
   },
 };
