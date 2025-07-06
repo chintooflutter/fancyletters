@@ -3,6 +3,7 @@ import Home from "./pages/index";
 import About from "./pages/about";
 import Privacy from "./pages/privacy";
 import Contact from "./pages/contact";
+import AestheticFonts from "./pages/AestheticFonts";
 import Header from "./components/Header";
 import SubdomainPage from "./pages/subdomains";
 import { getSubdomain } from "./pages/utils/getSubdomain";
@@ -14,7 +15,8 @@ function AppContent() {
     return (
       <div className="flex min-h-screen flex-col">
         <Header />
-        <main className="flex-1">
+        <main className="flex-1">          
+
           <SubdomainPage subdomain={subdomain} />
         </main>
       </div>
@@ -30,6 +32,7 @@ function AppContent() {
           <Route path="/about" element={<About />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/aesthetic-fonts" element={<AestheticFonts />} /> {/* ✅ New */}
         </Routes>
       </main>
     </div>

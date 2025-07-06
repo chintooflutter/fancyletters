@@ -4,7 +4,7 @@ import App from './App.jsx';
 import './index.css'; // ✅ Tailwind base styles must be here
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>    
-      <App />    
+  <React.StrictMode>          
+      <App />
   </React.StrictMode>
 );

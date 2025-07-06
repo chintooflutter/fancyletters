@@ -1,10 +1,20 @@
 {
-    "rewrites": [
-      { "source": "/about", "destination": "/" },
-      { "source": "/privacy", "destination": "/" },
-      { "source": "/contact", "destination": "/" }
-    ],
-    "cleanUrls": true,
-    "trailingSlash": false
-  }
-  
+  "rewrites": [
+    { "source": "/about", "destination": "/" },
+    { "source": "/privacy", "destination": "/" },
+    { "source": "/contact", "destination": "/" }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Permissions-Policy",
+          "value": "clipboard-write=(self)"
+        }
+      ]
+    }
+  ],
+  "cleanUrls": true,
+  "trailingSlash": false
+}
