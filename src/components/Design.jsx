@@ -15,61 +15,67 @@ export default function Design({ title, fontStyles }) {
   const handleCopy = (text, index) => {
     navigator.clipboard.writeText(text);
     setCopiedIndex(index);
-    setTimeout(() => setCopiedIndex(null), 1500); // Reset after 1.5 seconds
+    setTimeout(() => setCopiedIndex(null), 1500);
   };
 
   return (
-    <main style={styles.main}>
-      <header style={styles.header}>
-        <h1 style={styles.title}>{title} ✨</h1>
-        <p style={styles.description}>
+    <main className="max-w-3xl mx-auto px-4 py-8">
+      <header className="text-center mb-8">
+        <h1 className="text-4xl font-bold text-pink-500 mb-2">{title} ✨</h1>
+        <p className="text-base text-gray-700 max-w-xl mx-auto">
           Type your text below and instantly see it transformed into cute font styles. Copy and paste wherever you want!
         </p>
       </header>
 
-      <div style={styles.categoryWrap}>
+      {/* Category Buttons */}
+      <div className="flex flex-wrap justify-center gap-2 mb-8">
         {categories.map((cat) => (
           <button
             key={cat}
             onClick={() => setActiveCategory(cat)}
-            style={{
-              ...styles.button,
-              ...(activeCategory === cat ? styles.activeButton : {}),
-            }}
+            className={`px-4 py-1 text-sm rounded-full border transition ${
+              activeCategory === cat
+                ? "bg-pink-500 text-white border-pink-500"
+                : "bg-gray-100 text-gray-800 border-gray-300"
+            }`}
           >
             {cat}
           </button>
         ))}
       </div>
 
-      <div style={styles.inputWrap}>
-        <label htmlFor="input" style={styles.label}>With Text</label>
+      {/* Input Textarea */}
+      <div className="max-w-2xl mx-auto mb-12">
+        <label htmlFor="input" className="block mb-2 font-semibold text-sm text-gray-700">
+          With Text
+        </label>
         <textarea
           id="input"
           rows={3}
           placeholder="Type your text here..."
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          style={styles.textarea}
+          className="w-full p-4 rounded border border-gray-300 shadow-sm text-base focus:outline-pink-400"
         />
       </div>
 
-      <div style={styles.outputList}>
+      {/* Output Grid */}
+      <div className="grid gap-4">
         {filteredStyles.map(({ name, transform }, index) => {
           const output = transform(input);
           return (
-            <div key={name} style={styles.card}>
-              <div style={styles.cardLeft}>
-                <p style={styles.fontName}>{name}</p>
-                <p style={styles.outputText}>{output}</p>
-              </div>
+            <div key={name} className="bg-white border rounded-lg shadow-sm p-4 flex flex-col">
+              <p className="text-xs text-gray-500 mb-1">{name}</p>
+
+              <p className="text-xl break-words whitespace-pre-wrap leading-snug">{output}</p>
+
               <button
                 onClick={() => handleCopy(output, index)}
-                style={{
-                  ...styles.copyButton,
-                  backgroundColor: copiedIndex === index ? "#ec4899" : "#f9fafb",
-                  color: copiedIndex === index ? "#fff" : "#000",
-                }}
+                className={`mt-3 self-start px-4 py-1 rounded border text-sm font-medium transition ${
+                  copiedIndex === index
+                    ? "bg-pink-500 text-white border-pink-500"
+                    : "bg-gray-100 text-black border-gray-300"
+                }`}
               >
                 {copiedIndex === index ? "Copied!" : "Copy"}
               </button>
@@ -78,118 +84,10 @@ export default function Design({ title, fontStyles }) {
         })}
       </div>
 
-      <footer style={styles.footer}>
+      {/* Footer */}
+      <footer className="mt-16 text-center text-sm text-gray-400">
         © {new Date().getFullYear()} FancyLetters.org — Make Your Text Fancy ✨
       </footer>
     </main>
   );
 }
-
-const styles = {
-  main: {
-    maxWidth: "960px",
-    margin: "0 auto",
-    padding: "2rem 1rem",
-  },
-  header: {
-    textAlign: "center",
-    marginBottom: "2rem",
-  },
-  title: {
-    fontSize: "2.5rem",
-    color: "#ec4899",
-    fontWeight: "bold",
-    marginBottom: "0.5rem",
-  },
-  description: {
-    fontSize: "1.1rem",
-    color: "#555",
-    maxWidth: "600px",
-    margin: "0 auto",
-  },
-  categoryWrap: {
-    display: "flex",
-    flexWrap: "wrap",
-    justifyContent: "center",
-    gap: "0.5rem",
-    marginBottom: "2rem",
-  },
-  button: {
-    padding: "0.5rem 1rem",
-    fontSize: "0.875rem",
-    border: "1px solid #ccc",
-    borderRadius: "999px",
-    background: "#f3f4f6",
-    cursor: "pointer",
-    transition: "all 0.2s ease-in-out",
-  },
-  activeButton: {
-    backgroundColor: "#ec4899",
-    color: "#fff",
-    borderColor: "#ec4899",
-  },
-  inputWrap: {
-    maxWidth: "640px",
-    margin: "0 auto 3rem",
-  },
-  label: {
-    display: "block",
-    marginBottom: "0.5rem",
-    fontWeight: "600",
-    fontSize: "0.875rem",
-    color: "#333",
-  },
-  textarea: {
-    width: "100%",
-    padding: "1rem",
-    fontSize: "1rem",
-    borderRadius: "8px",
-    border: "1px solid #ccc",
-    resize: "none",
-    boxShadow: "0 1px 3px rgba(0,0,0,0.1)",
-    outline: "none",
-  },
-  outputList: {
-    display: "grid",
-    gap: "1rem",
-  },
-  card: {
-    display: "flex",
-    flexDirection: "column",
-    border: "1px solid #eee",
-    borderRadius: "10px",
-    padding: "1rem",
-    backgroundColor: "#fff",
-    boxShadow: "0 1px 3px rgba(0,0,0,0.05)",
-  },
-  cardLeft: {
-    marginBottom: "0.5rem",
-  },
-  fontName: {
-    fontSize: "0.75rem",
-    color: "#999",
-    marginBottom: "0.25rem",
-  },
-  outputText: {
-    fontSize: "1.25rem",
-    wordBreak: "break-word",
-    whiteSpace: "pre-wrap",
-    lineHeight: 1.5,
-  },
-  copyButton: {
-    alignSelf: "flex-start",
-    padding: "0.4rem 1rem",
-    borderRadius: "6px",
-    border: "1px solid #ddd",
-    fontSize: "0.875rem",
-    fontWeight: "500",
-    cursor: "pointer",
-    transition: "all 0.2s",
-  },
-  footer: {
-    marginTop: "4rem",
-    textAlign: "center",
-    fontSize: "0.875rem",
-    color: "#aaa",
-  },
-};

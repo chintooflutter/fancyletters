@@ -5,6 +5,9 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
+  // Check if current domain is a subdomain
+  const isSubdomain = window.location.hostname.split(".").length > 2;
+
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 768);
     window.addEventListener("resize", handleResize);
@@ -14,9 +17,15 @@ export default function Header() {
   return (
     <header style={styles.header}>
       <div style={styles.container}>
-        <Link to="/" style={styles.logo}>
-          FancyLetters<span style={styles.dot}>.org</span>
-        </Link>
+        {isSubdomain ? (
+          <a href="https://fancyletters.org" style={styles.logo}>
+            FancyLetters<span style={styles.dot}>.org</span>
+          </a>
+        ) : (
+          <Link to="/" style={styles.logo}>
+            FancyLetters<span style={styles.dot}>.org</span>
+          </Link>
+        )}
 
         {isMobile && (
           <button onClick={() => setIsOpen(!isOpen)} style={styles.hamburger}>
@@ -26,9 +35,19 @@ export default function Header() {
 
         {(isOpen || !isMobile) && (
           <nav style={isMobile ? styles.navMobile : styles.navDesktop}>
-            <Link to="/about" style={styles.navLink} onClick={() => setIsOpen(false)}>About</Link>
-            <Link to="/privacy" style={styles.navLink} onClick={() => setIsOpen(false)}>Privacy</Link>
-            <Link to="/contact" style={styles.navLink} onClick={() => setIsOpen(false)}>Contact</Link>
+            {isSubdomain ? (
+              <>
+                <a href="https://fancyletters.org/about" style={styles.navLink}>About</a>
+                <a href="https://fancyletters.org/privacy" style={styles.navLink}>Privacy</a>
+                <a href="https://fancyletters.org/contact" style={styles.navLink}>Contact</a>
+              </>
+            ) : (
+              <>
+                <Link to="/about" style={styles.navLink} onClick={() => setIsOpen(false)}>About</Link>
+                <Link to="/privacy" style={styles.navLink} onClick={() => setIsOpen(false)}>Privacy</Link>
+                <Link to="/contact" style={styles.navLink} onClick={() => setIsOpen(false)}>Contact</Link>
+              </>
+            )}
           </nav>
         )}
       </div>
