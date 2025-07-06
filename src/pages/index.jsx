@@ -45,7 +45,7 @@ export default function Home() {
   return (
     <main style={stylesMain.container}>
       <section style={stylesMain.hero}>
-        <h1 style={stylesMain.title}>Fancy Letters Generator</h1>
+        <h1 style={stylesMain.title}>Fancy Letters Generator 2025</h1>
         <p style={stylesMain.subtitle}>
           Stylish and Unicode font generators for Instagram, Snapchat, Fortnite & more!
         </p>
