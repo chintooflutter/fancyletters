@@ -15,11 +15,12 @@ export default function Design({ title, fontStyles }) {
   const handleCopy = (text, index) => {
     navigator.clipboard.writeText(text);
     setCopiedIndex(index);
-    setTimeout(() => setCopiedIndex(null), 1500); // Reset after 1.5 seconds
+    setTimeout(() => setCopiedIndex(null), 1500);
   };
 
   return (
     <main style={styles.main}>
+      {/* Header */}
       <header style={styles.header}>
         <h1 style={styles.title}>{title} ✨</h1>
         <p style={styles.description}>
@@ -27,14 +28,15 @@ export default function Design({ title, fontStyles }) {
         </p>
       </header>
 
+      {/* Category Buttons */}
       <div style={styles.categoryWrap}>
         {categories.map((cat) => (
           <button
             key={cat}
             onClick={() => setActiveCategory(cat)}
             style={{
-              ...styles.button,
-              ...(activeCategory === cat ? styles.activeButton : {}),
+              ...styles.categoryButton,
+              ...(activeCategory === cat ? styles.activeCategory : {}),
             }}
           >
             {cat}
@@ -42,8 +44,11 @@ export default function Design({ title, fontStyles }) {
         ))}
       </div>
 
+      {/* Input */}
       <div style={styles.inputWrap}>
-        <label htmlFor="input" style={styles.label}>With Text</label>
+        <label htmlFor="input" style={styles.label}>
+          With Text
+        </label>
         <textarea
           id="input"
           rows={3}
@@ -54,6 +59,7 @@ export default function Design({ title, fontStyles }) {
         />
       </div>
 
+      {/* Font Output */}
       <div style={styles.outputList}>
         {filteredStyles.map(({ name, transform }, index) => {
           const output = transform(input);
@@ -67,8 +73,11 @@ export default function Design({ title, fontStyles }) {
                 onClick={() => handleCopy(output, index)}
                 style={{
                   ...styles.copyButton,
-                  backgroundColor: copiedIndex === index ? "#ec4899" : "#f9fafb",
+                  backgroundColor:
+                    copiedIndex === index ? "#ec4899" : "#f9fafb",
                   color: copiedIndex === index ? "#fff" : "#000",
+                  borderColor:
+                    copiedIndex === index ? "#ec4899" : "#ddd",
                 }}
               >
                 {copiedIndex === index ? "Copied!" : "Copy"}
@@ -78,6 +87,7 @@ export default function Design({ title, fontStyles }) {
         })}
       </div>
 
+      {/* Footer */}
       <footer style={styles.footer}>
         © {new Date().getFullYear()} FancyLetters.org — Make Your Text Fancy ✨
       </footer>
@@ -89,20 +99,20 @@ const styles = {
   main: {
     maxWidth: "960px",
     margin: "0 auto",
-    padding: "2rem 1rem",
+    padding: "1.5rem 1rem",
   },
   header: {
     textAlign: "center",
     marginBottom: "2rem",
   },
   title: {
-    fontSize: "2.5rem",
-    color: "#ec4899",
+    fontSize: "2rem",
     fontWeight: "bold",
+    color: "#ec4899",
     marginBottom: "0.5rem",
   },
   description: {
-    fontSize: "1.1rem",
+    fontSize: "1rem",
     color: "#555",
     maxWidth: "600px",
     margin: "0 auto",
@@ -112,25 +122,25 @@ const styles = {
     flexWrap: "wrap",
     justifyContent: "center",
     gap: "0.5rem",
-    marginBottom: "2rem",
+    marginBottom: "1.5rem",
   },
-  button: {
+  categoryButton: {
     padding: "0.5rem 1rem",
     fontSize: "0.875rem",
     border: "1px solid #ccc",
     borderRadius: "999px",
-    background: "#f3f4f6",
+    backgroundColor: "#f3f4f6",
     cursor: "pointer",
     transition: "all 0.2s ease-in-out",
   },
-  activeButton: {
+  activeCategory: {
     backgroundColor: "#ec4899",
     color: "#fff",
     borderColor: "#ec4899",
   },
   inputWrap: {
     maxWidth: "640px",
-    margin: "0 auto 3rem",
+    margin: "0 auto 2.5rem",
   },
   label: {
     display: "block",
@@ -150,12 +160,14 @@ const styles = {
     outline: "none",
   },
   outputList: {
-    display: "grid",
+    display: "flex",
+    flexDirection: "column",
     gap: "1rem",
   },
   card: {
     display: "flex",
     flexDirection: "column",
+    justifyContent: "space-between",
     border: "1px solid #eee",
     borderRadius: "10px",
     padding: "1rem",
@@ -163,7 +175,7 @@ const styles = {
     boxShadow: "0 1px 3px rgba(0,0,0,0.05)",
   },
   cardLeft: {
-    marginBottom: "0.5rem",
+    marginBottom: "0.75rem",
   },
   fontName: {
     fontSize: "0.75rem",
@@ -178,16 +190,16 @@ const styles = {
   },
   copyButton: {
     alignSelf: "flex-start",
-    padding: "0.4rem 1rem",
+    padding: "0.5rem 1.25rem",
     borderRadius: "6px",
     border: "1px solid #ddd",
     fontSize: "0.875rem",
     fontWeight: "500",
     cursor: "pointer",
-    transition: "all 0.2s",
+    transition: "all 0.2s ease-in-out",
   },
   footer: {
-    marginTop: "4rem",
+    marginTop: "3rem",
     textAlign: "center",
     fontSize: "0.875rem",
     color: "#aaa",
