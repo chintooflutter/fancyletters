@@ -3,7 +3,7 @@ import { useState } from "react";
 export default function Design({ title, fontStyles }) {
   const [input, setInput] = useState("");
   const [activeCategory, setActiveCategory] = useState("All");
-  const [copiedText, setCopiedText] = useState("");
+  const [copiedIndex, setCopiedIndex] = useState(null);
 
   const categories = ["All", ...new Set(fontStyles.map((s) => s.category))];
 
@@ -12,15 +12,14 @@ export default function Design({ title, fontStyles }) {
       ? fontStyles
       : fontStyles.filter((s) => s.category === activeCategory);
 
-  const handleCopy = (text) => {
+  const handleCopy = (text, index) => {
     navigator.clipboard.writeText(text);
-    setCopiedText(text);
-    setTimeout(() => setCopiedText(""), 1500); // Clear after 1.5s
+    setCopiedIndex(index);
+    setTimeout(() => setCopiedIndex(null), 1500); // Reset after 1.5 seconds
   };
 
   return (
     <main style={styles.main}>
-      {/* Title */}
       <header style={styles.header}>
         <h1 style={styles.title}>{title} ✨</h1>
         <p style={styles.description}>
@@ -28,7 +27,6 @@ export default function Design({ title, fontStyles }) {
         </p>
       </header>
 
-      {/* Category Filter */}
       <div style={styles.categoryWrap}>
         {categories.map((cat) => (
           <button
@@ -44,7 +42,6 @@ export default function Design({ title, fontStyles }) {
         ))}
       </div>
 
-      {/* Input */}
       <div style={styles.inputWrap}>
         <label htmlFor="input" style={styles.label}>With Text</label>
         <textarea
@@ -57,9 +54,8 @@ export default function Design({ title, fontStyles }) {
         />
       </div>
 
-      {/* Output List */}
       <div style={styles.outputList}>
-        {filteredStyles.map(({ name, transform }) => {
+        {filteredStyles.map(({ name, transform }, index) => {
           const output = transform(input);
           return (
             <div key={name} style={styles.card}>
@@ -67,23 +63,21 @@ export default function Design({ title, fontStyles }) {
                 <p style={styles.fontName}>{name}</p>
                 <p style={styles.outputText}>{output}</p>
               </div>
-              <div style={styles.copyWrapper}>
-                <button
-                  onClick={() => handleCopy(output)}
-                  style={styles.copyButton}
-                >
-                  Copy
-                </button>
-                {copiedText === output && (
-                  <span style={styles.copiedText}>Copied!</span>
-                )}
-              </div>
+              <button
+                onClick={() => handleCopy(output, index)}
+                style={{
+                  ...styles.copyButton,
+                  backgroundColor: copiedIndex === index ? "#ec4899" : "#f9fafb",
+                  color: copiedIndex === index ? "#fff" : "#000",
+                }}
+              >
+                {copiedIndex === index ? "Copied!" : "Copy"}
+              </button>
             </div>
           );
         })}
       </div>
 
-      {/* Footer */}
       <footer style={styles.footer}>
         © {new Date().getFullYear()} FancyLetters.org — Make Your Text Fancy ✨
       </footer>
@@ -91,7 +85,6 @@ export default function Design({ title, fontStyles }) {
   );
 }
 
-// Inline Styles
 const styles = {
   main: {
     maxWidth: "960px",
@@ -162,9 +155,7 @@ const styles = {
   },
   card: {
     display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    flexWrap: "wrap",
+    flexDirection: "column",
     border: "1px solid #eee",
     borderRadius: "10px",
     padding: "1rem",
@@ -172,8 +163,7 @@ const styles = {
     boxShadow: "0 1px 3px rgba(0,0,0,0.05)",
   },
   cardLeft: {
-    flex: 1,
-    marginRight: "1rem",
+    marginBottom: "0.5rem",
   },
   fontName: {
     fontSize: "0.75rem",
@@ -186,27 +176,15 @@ const styles = {
     whiteSpace: "pre-wrap",
     lineHeight: 1.5,
   },
-  copyWrapper: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "flex-end",
-    gap: "0.25rem",
-  },
   copyButton: {
+    alignSelf: "flex-start",
     padding: "0.4rem 1rem",
     borderRadius: "6px",
     border: "1px solid #ddd",
-    background: "#ec4899",
-    color: "#fff",
     fontSize: "0.875rem",
     fontWeight: "500",
     cursor: "pointer",
     transition: "all 0.2s",
-  },
-  copiedText: {
-    fontSize: "0.75rem",
-    color: "#16a34a",
-    fontWeight: "bold",
   },
   footer: {
     marginTop: "4rem",

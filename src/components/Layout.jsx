@@ -1,8 +1,18 @@
+import Header from "./Header";
+
 export default function Layout({ children }) {
-    return (
-      <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-8">
+  return (
+    <>
+      <Header />
+      <div
+        style={{
+          maxWidth: "960px",
+          margin: "0 auto",
+          padding: "2rem 1rem",
+        }}
+      >
         {children}
       </div>
-    );
-  }
-  
+    </>
+  );
+}
