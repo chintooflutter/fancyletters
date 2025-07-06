@@ -1,0 +1,10 @@
+{
+    "rewrites": [
+      { "source": "/about", "destination": "/" },
+      { "source": "/privacy", "destination": "/" },
+      { "source": "/contact", "destination": "/" }
+    ],
+    "cleanUrls": true,
+    "trailingSlash": false
+  }
+  
